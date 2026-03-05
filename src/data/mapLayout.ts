@@ -269,10 +269,10 @@ export const specialAreas: SpecialArea[] = [
         fontSize: 10,
         borderRadius: 80,
     },
-    // ÁREA DE EXPOSIÇÃO DE MÁQUINAS — centro-topo
+    // Lounge T3 Hub — centro-topo
     {
         id: 'expo',
-        label: 'ÁREA DE EXPOSIÇÃO\nDE MÁQUINAS',
+        label: 'Lounge T3 Hub',
         x: 296, y: 168,
         width: 155, height: 180,
         color: '#4f46e5',
