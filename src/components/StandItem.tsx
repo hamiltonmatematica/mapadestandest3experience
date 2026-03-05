@@ -10,9 +10,10 @@ interface StandItemProps {
     stand: Stand | undefined;
     onClick: (stand: Stand) => void;
     isSelected?: boolean;
+    isHighlighted?: boolean;
 }
 
-export default function StandItem({ position, stand, onClick, isSelected }: StandItemProps) {
+export default function StandItem({ position, stand, onClick, isSelected, isHighlighted }: StandItemProps) {
     const status = stand?.status || 'disponivel';
     const tipo = stand?.tipo || position.tipo;
     const empresa = stand?.empresa;
@@ -142,6 +143,24 @@ export default function StandItem({ position, stand, onClick, isSelected }: Stan
                     opacity={0.8}
                 >
                     <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite" />
+                </rect>
+            )}
+
+            {/* Search highlight pulse */}
+            {isHighlighted && !isSelected && (
+                <rect
+                    x={position.x - 5}
+                    y={position.y - 5}
+                    width={position.width + 10}
+                    height={position.height + 10}
+                    rx={8}
+                    fill="none"
+                    stroke="#3b82f6"
+                    strokeWidth={3}
+                    opacity={0.9}
+                >
+                    <animate attributeName="opacity" values="1;0.3;1" dur="0.8s" repeatCount="indefinite" />
+                    <animate attributeName="strokeWidth" values="3;5;3" dur="0.8s" repeatCount="indefinite" />
                 </rect>
             )}
         </g>

@@ -88,7 +88,11 @@ export default function HomePage() {
                 </li>
                 <li className="flex gap-2">
                   <span>🔍</span>
-                  <span>Passe o mouse para ver informações rápidas</span>
+                  <span>Busque por número ou empresa no campo de busca</span>
+                </li>
+                <li className="flex gap-2">
+                  <span>🔎</span>
+                  <span>Scroll ou pinch para zoom • arraste para mover</span>
                 </li>
                 <li className="flex gap-2">
                   <span>⚙️</span>
