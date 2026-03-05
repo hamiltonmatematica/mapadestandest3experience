@@ -7,6 +7,7 @@ import DashboardStats from '@/components/DashboardStats';
 import { Stand, StandStatus, StandType } from '@/types/stand';
 import { standStatusColors, standStatusLabels, standTypeLabels } from '@/utils/standColors';
 import Link from 'next/link';
+import * as XLSX from 'xlsx';
 
 export default function AdminPage() {
     const { stands, loading, stats, updateStand } = useStands();
@@ -66,19 +67,24 @@ export default function AdminPage() {
         setSelectedStand(null);
     };
 
-    const exportCSV = () => {
-        const header = 'Numero,Empresa,Status,Tipo\n';
-        const rows = filteredStands
-            .map((s) => `${s.numero},"${s.empresa || ''}",${s.status},${s.tipo}`)
-            .join('\n');
-        const csv = header + rows;
-        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `stands_${new Date().toISOString().split('T')[0]}.csv`;
-        link.click();
-        URL.revokeObjectURL(url);
+    const exportXLSX = () => {
+        const data = filteredStands.map((s) => ({
+            'Número': s.numero,
+            'Empresa': s.empresa || '',
+            'Status': standStatusLabels[s.status] || s.status,
+            'Tipo': standTypeLabels[s.tipo] || s.tipo,
+        }));
+        const ws = XLSX.utils.json_to_sheet(data);
+        // Ajustar largura das colunas
+        ws['!cols'] = [
+            { wch: 8 },   // Número
+            { wch: 30 },  // Empresa
+            { wch: 14 },  // Status
+            { wch: 14 },  // Tipo
+        ];
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Stands');
+        XLSX.writeFile(wb, `stands_${new Date().toISOString().split('T')[0]}.xlsx`);
     };
 
     if (loading) {
@@ -109,10 +115,10 @@ export default function AdminPage() {
                         </div>
                     </div>
                     <button
-                        onClick={exportCSV}
+                        onClick={exportXLSX}
                         className="px-4 py-2 rounded-xl bg-green-600 hover:bg-green-500 text-white transition-all text-sm font-medium shadow-lg shadow-green-500/25"
                     >
-                        📥 Exportar CSV
+                        📥 Exportar XLSX
                     </button>
                 </div>
             </header>
