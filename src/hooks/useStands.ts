@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/services/supabaseClient';
 import { Stand, StandStatus } from '@/types/stand';
-import { generateMockStands } from '@/data/mapLayout';
+import { generateMockStands, standPositions } from '@/data/mapLayout';
 
 const USE_MOCK = !process.env.NEXT_PUBLIC_SUPABASE_URL;
 
@@ -105,16 +105,19 @@ export function useStands() {
         };
     }, [getStands]);
 
+    // Filter only stands that have a position in the layout (visible)
+    const visibleStands = stands.filter(s => standPositions.some(p => p.numero === s.numero));
+
     // Stats
     const stats = {
-        total: stands.length,
-        disponivel: stands.filter(s => s.status === 'disponivel').length,
-        reservado: stands.filter(s => s.status === 'reservado').length,
-        vendido: stands.filter(s => s.status === 'vendido').length,
+        total: visibleStands.length,
+        disponivel: visibleStands.filter(s => s.status === 'disponivel').length,
+        reservado: visibleStands.filter(s => s.status === 'reservado').length,
+        vendido: visibleStands.filter(s => s.status === 'vendido').length,
     };
 
     return {
-        stands,
+        stands: visibleStands,
         loading,
         error,
         stats,
