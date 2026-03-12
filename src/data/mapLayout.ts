@@ -55,26 +55,13 @@ export const standPositions: StandPosition[] = [
     // ═══════════════════════════════════════════
     { numero: 15, tipo: 'bronze', x: 920, y: colY(0, 104), width: 48, height: SH },
     { numero: 16, tipo: 'bronze', x: 920, y: colY(1, 104), width: 48, height: SH },
-    { numero: 17, tipo: 'bronze', x: 920, y: colY(2, 104), width: 48, height: SH },
-    { numero: 18, tipo: 'bronze', x: 920, y: colY(3, 104), width: 48, height: SH },
-    { numero: 19, tipo: 'bronze', x: 920, y: colY(4, 104), width: 48, height: SH },
-    { numero: 20, tipo: 'bronze', x: 920, y: colY(5, 104), width: 48, height: SH },
-    { numero: 21, tipo: 'bronze', x: 920, y: colY(6, 104), width: 48, height: SH },
-    { numero: 22, tipo: 'bronze', x: 920, y: colY(7, 104), width: 48, height: SH },
-    { numero: 23, tipo: 'bronze', x: 920, y: colY(8, 104), width: 48, height: SH },
-    { numero: 24, tipo: 'bronze', x: 920, y: colY(9, 104), width: 48, height: SH },
-    { numero: 25, tipo: 'bronze', x: 920, y: colY(10, 104), width: 48, height: SH },
+
 
     // ═══════════════════════════════════════════
     // CANTO INFERIOR DIREITO (26–31)
     // Formato "L": 28-27-26 horizontal, 29 abaixo de 28, 30 abaixo de 29
     // ═══════════════════════════════════════════
-    { numero: 28, tipo: 'bronze', x: 690, y: 654, width: SW, height: SH },
-    { numero: 27, tipo: 'bronze', x: 746, y: 654, width: SW, height: SH },
-    { numero: 26, tipo: 'bronze', x: 802, y: 654, width: SW, height: SH },
-    { numero: 29, tipo: 'bronze', x: 690, y: 712, width: SW, height: SH },
-    { numero: 30, tipo: 'bronze', x: 690, y: 770, width: SW, height: 46 },
-    { numero: 31, tipo: 'bronze', x: 656, y: 833, width: SW, height: 48 },
+
 
     // ═══════════════════════════════════════════
     // STAND 32 (canto inferior esquerdo)
@@ -85,18 +72,7 @@ export const standPositions: StandPosition[] = [
     // COLUNA ESQUERDA (33–44) — Prata / Ouro
     // Lateral esquerda, de baixo para cima
     // ═══════════════════════════════════════════
-    { numero: 33, tipo: 'prata', x: 14, y: colY12(11, 104), width: SW, height: 52 },
-    { numero: 34, tipo: 'prata', x: 14, y: colY12(10, 104), width: SW, height: 52 },
-    { numero: 35, tipo: 'prata', x: 14, y: colY12(9, 104), width: SW, height: 52 },
-    { numero: 36, tipo: 'prata', x: 14, y: colY12(8, 104), width: SW, height: 52 },
-    { numero: 37, tipo: 'prata', x: 14, y: colY12(7, 104), width: SW, height: 52 },
-    { numero: 38, tipo: 'prata', x: 14, y: colY12(6, 104), width: SW, height: 52 },
-    { numero: 39, tipo: 'prata', x: 14, y: colY12(5, 104), width: SW, height: 52 },
-    { numero: 40, tipo: 'prata', x: 14, y: colY12(4, 104), width: SW, height: 52 },
-    { numero: 41, tipo: 'prata', x: 14, y: colY12(3, 104), width: SW, height: 52 },
-    { numero: 42, tipo: 'prata', x: 14, y: colY12(2, 104), width: SW, height: 52 },
-    { numero: 43, tipo: 'prata', x: 14, y: colY12(1, 104), width: SW, height: 52 },
-    { numero: 44, tipo: 'ouro', x: 14, y: colY12(0, 104), width: SW, height: 52 },
+
 
     // ═══════════════════════════════════════════
     // 2ª COLUNA ESQUERDA (45–54) — Prata
