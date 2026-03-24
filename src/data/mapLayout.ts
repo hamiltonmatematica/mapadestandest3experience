@@ -120,7 +120,7 @@ export const specialAreas: SpecialArea[] = [
     {
         id: 'bar_esq',
         label: 'BAR',
-        x: START_X - 1.5 * SW + GAP,    // Col -1.5
+        x: START_X + 0.5 * SW + GAP,    // Col 0.5
         y: START_Y + 12 * SH + GAP,   // Row 12
         width: 2 * SW - 2 * GAP,      
         height: 1.5 * SH - 2 * GAP,
@@ -132,7 +132,7 @@ export const specialAreas: SpecialArea[] = [
     {
         id: 'bar_dir',
         label: 'BAR',
-        x: START_X + 8.5 * SW + GAP,    // Col 8.5 (to the left of Right Wing at Col 9.5)
+        x: START_X + 6.5 * SW + GAP,    // Col 6.5
         y: START_Y + 12 * SH + GAP,   // Row 12
         width: 1.5 * SW - 2 * GAP,
         height: 1.5 * SH - 2 * GAP,
