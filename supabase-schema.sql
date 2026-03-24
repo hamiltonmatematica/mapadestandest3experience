@@ -58,14 +58,14 @@ INSERT INTO stands (numero, status, tipo) VALUES
   -- Bottom right (26-31) - Prata
   (26, 'disponivel', 'prata'), (27, 'disponivel', 'prata'),
   (28, 'disponivel', 'prata'), (29, 'disponivel', 'prata'),
-  (30, 'disponivel', 'prata'), (31, 'disponivel', 'prata'),
+  (30, 'disponivel', 'prata'), (31, 'disponivel', 'ouro'),
   -- Bottom + Left (32-44)
-  (32, 'disponivel', 'prata'),
-  (33, 'disponivel', 'prata'), (34, 'disponivel', 'prata'),
-  (35, 'disponivel', 'prata'), (36, 'disponivel', 'prata'),
-  (37, 'disponivel', 'prata'), (38, 'disponivel', 'prata'),
-  (39, 'disponivel', 'prata'), (40, 'disponivel', 'prata'),
-  (41, 'disponivel', 'prata'), (42, 'disponivel', 'prata'),
+  (32, 'disponivel', 'ouro'),
+  (33, 'disponivel', 'ouro'), (34, 'disponivel', 'ouro'),
+  (35, 'disponivel', 'ouro'), (36, 'disponivel', 'ouro'),
+  (37, 'disponivel', 'ouro'), (38, 'disponivel', 'ouro'),
+  (39, 'disponivel', 'ouro'), (40, 'disponivel', 'ouro'),
+  (41, 'disponivel', 'ouro'), (42, 'disponivel', 'ouro'),
   (43, 'disponivel', 'prata'), (44, 'disponivel', 'ouro'),
   -- Second left (45-54) - Prata
   (45, 'disponivel', 'prata'), (46, 'disponivel', 'prata'),
