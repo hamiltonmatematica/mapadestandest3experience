@@ -66,7 +66,7 @@ for (let i = 31; i <= 42; i++) {
 
     standPositions.push({
         numero: i,
-        tipo: 'master',
+        tipo: 'ouro',
         // Cols 3 and 4
         x: START_X + (isRight ? 4 : 3) * SW + GAP,
         // Start at Row 3
