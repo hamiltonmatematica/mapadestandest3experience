@@ -72,23 +72,23 @@ export const standPositions: StandPosition[] = [
     // COLUNA ESQUERDA (33–44) — Prata / Ouro
     // Lateral esquerda, de baixo para cima
     // ═══════════════════════════════════════════
-    { numero: 44, tipo: 'ouro', x: 62, y: colY(0, 128), width: SW, height: SH },
-    { numero: 43, tipo: 'prata', x: 62, y: colY(1, 128), width: SW, height: SH },
-    { numero: 42, tipo: 'prata', x: 62, y: colY(2, 128), width: SW, height: SH },
-    { numero: 41, tipo: 'prata', x: 62, y: colY(3, 128), width: SW, height: SH },
-    { numero: 40, tipo: 'prata', x: 62, y: colY(4, 128), width: SW, height: SH },
-    { numero: 39, tipo: 'prata', x: 62, y: colY(5, 128), width: SW, height: SH },
-    { numero: 38, tipo: 'prata', x: 62, y: colY(6, 128), width: SW, height: SH },
-    { numero: 37, tipo: 'prata', x: 62, y: colY(7, 128), width: SW, height: SH },
-    { numero: 36, tipo: 'prata', x: 62, y: colY(8, 128), width: SW, height: SH },
-    { numero: 35, tipo: 'prata', x: 62, y: colY(9, 128), width: SW, height: SH },
-    { numero: 34, tipo: 'prata', x: 62, y: colY(10, 128), width: SW, height: SH },
-    { numero: 33, tipo: 'prata', x: 62, y: colY(11, 128), width: SW, height: SH },
+    { numero: 44, tipo: 'ouro', x: 14, y: colY12(0, 104), width: SW, height: 52 },
+    { numero: 43, tipo: 'prata', x: 14, y: colY12(1, 104), width: SW, height: 52 },
+    { numero: 42, tipo: 'prata', x: 14, y: colY12(2, 104), width: SW, height: 52 },
+    { numero: 41, tipo: 'prata', x: 14, y: colY12(3, 104), width: SW, height: 52 },
+    { numero: 40, tipo: 'prata', x: 14, y: colY12(4, 104), width: SW, height: 52 },
+    { numero: 39, tipo: 'prata', x: 14, y: colY12(5, 104), width: SW, height: 52 },
+    { numero: 38, tipo: 'prata', x: 14, y: colY12(6, 104), width: SW, height: 52 },
+    { numero: 37, tipo: 'prata', x: 14, y: colY12(7, 104), width: SW, height: 52 },
+    { numero: 36, tipo: 'prata', x: 14, y: colY12(8, 104), width: SW, height: 52 },
+    { numero: 35, tipo: 'prata', x: 14, y: colY12(9, 104), width: SW, height: 52 },
+    { numero: 34, tipo: 'prata', x: 14, y: colY12(10, 104), width: SW, height: 52 },
+    { numero: 33, tipo: 'prata', x: 14, y: colY12(11, 104), width: SW, height: 52 },
     // ═══════════════════════════════════════════
     // 2ª COLUNA ESQUERDA (45–54) — Prata
     // De cima para baixo
     // ═══════════════════════════════════════════
-    { numero: 45, tipo: 'ouro', x: 118, y: colY(0, 128), width: SW, height: SH },
+    { numero: 45, tipo: 'prata', x: 118, y: colY(0, 128), width: SW, height: SH },
     { numero: 46, tipo: 'prata', x: 118, y: colY(1, 128), width: SW, height: SH },
     { numero: 47, tipo: 'prata', x: 118, y: colY(2, 128), width: SW, height: SH },
     { numero: 48, tipo: 'prata', x: 118, y: colY(3, 128), width: SW, height: SH },
@@ -133,7 +133,7 @@ export const standPositions: StandPosition[] = [
     // COLUNA CENTRO-DIREITA (75–84) — Master
     // De cima (84) para baixo (75)
     // ═══════════════════════════════════════════
-    { numero: 84, tipo: 'ouro', x: 534, y: colY(0, 128), width: SW, height: SH },
+    { numero: 84, tipo: 'master', x: 534, y: colY(0, 128), width: SW, height: SH },
     { numero: 83, tipo: 'master', x: 534, y: colY(1, 128), width: SW, height: SH },
     { numero: 82, tipo: 'master', x: 534, y: colY(2, 128), width: SW, height: SH },
     { numero: 81, tipo: 'master', x: 534, y: colY(3, 128), width: SW, height: SH },
@@ -148,7 +148,7 @@ export const standPositions: StandPosition[] = [
     // COLUNA INTERNA DIREITA (85–92) — Master
     // De cima para baixo (somente 8 stands)
     // ═══════════════════════════════════════════
-    { numero: 85, tipo: 'master', x: 690, y: colY(0, 128), width: SW, height: SH },
+    { numero: 85, tipo: 'ouro', x: 690, y: colY(0, 128), width: SW, height: SH },
     { numero: 86, tipo: 'master', x: 690, y: colY(1, 128), width: SW, height: SH },
     { numero: 87, tipo: 'master', x: 690, y: colY(2, 128), width: SW, height: SH },
     { numero: 88, tipo: 'master', x: 690, y: colY(3, 128), width: SW, height: SH },
@@ -162,7 +162,7 @@ export const standPositions: StandPosition[] = [
     // Encostada na coluna 85-92 (sem corredor)
     // De cima (100) para baixo (93)
     // ═══════════════════════════════════════════
-    { numero: 100, tipo: 'prata', x: 746, y: colY(0, 128), width: SW, height: SH },
+    { numero: 100, tipo: 'bronze', x: 746, y: colY(0, 128), width: SW, height: SH },
     { numero: 99, tipo: 'bronze', x: 746, y: colY(1, 128), width: SW, height: SH },
     { numero: 98, tipo: 'bronze', x: 746, y: colY(2, 128), width: SW, height: SH },
     { numero: 97, tipo: 'bronze', x: 746, y: colY(3, 128), width: SW, height: SH },
