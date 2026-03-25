@@ -68,22 +68,8 @@ export const standPositions: StandPosition[] = [
     // ═══════════════════════════════════════════
     { numero: 32, tipo: 'prata', x: 62, y: 828, width: SW, height: 50 },
 
-    // ═══════════════════════════════════════════
-    // COLUNA ESQUERDA (33–44) — Prata / Ouro
-    // Lateral esquerda, de baixo para cima
-    // ═══════════════════════════════════════════
-    { numero: 44, tipo: 'ouro', x: 14, y: colY12(0, 104), width: SW, height: 52 },
-    { numero: 43, tipo: 'prata', x: 14, y: colY12(1, 104), width: SW, height: 52 },
-    { numero: 42, tipo: 'prata', x: 14, y: colY12(2, 104), width: SW, height: 52 },
-    { numero: 41, tipo: 'prata', x: 14, y: colY12(3, 104), width: SW, height: 52 },
-    { numero: 40, tipo: 'prata', x: 14, y: colY12(4, 104), width: SW, height: 52 },
-    { numero: 39, tipo: 'prata', x: 14, y: colY12(5, 104), width: SW, height: 52 },
-    { numero: 38, tipo: 'prata', x: 14, y: colY12(6, 104), width: SW, height: 52 },
-    { numero: 37, tipo: 'prata', x: 14, y: colY12(7, 104), width: SW, height: 52 },
-    { numero: 36, tipo: 'prata', x: 14, y: colY12(8, 104), width: SW, height: 52 },
-    { numero: 35, tipo: 'prata', x: 14, y: colY12(9, 104), width: SW, height: 52 },
-    { numero: 34, tipo: 'prata', x: 14, y: colY12(10, 104), width: SW, height: 52 },
-    { numero: 33, tipo: 'prata', x: 14, y: colY12(11, 104), width: SW, height: 52 },
+
+
     // ═══════════════════════════════════════════
     // 2ª COLUNA ESQUERDA (45–54) — Prata
     // De cima para baixo
