@@ -40,7 +40,7 @@ export const standPositions: StandPosition[] = [
         numero: 3 + i, tipo: 'ouro' as StandType, 
         x: gX(0, 12 - i), y: gY(0, 12 - i), 
         width: SW, height: SH 
-    })),
+    })).filter(s => s.numero !== 4),
   
     // ═══════════════════════════════════════════
     // ANTES: Top Row (11-22) -> Row 0, Cols 1 a 12
