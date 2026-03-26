@@ -62,6 +62,13 @@ export function useStands() {
                 .eq('id', id);
 
             if (updateError) throw updateError;
+
+            // Atualiza estado local imediatamente
+            setStands(prev =>
+                prev.map(s =>
+                    s.id === id ? { ...s, ...updates, updated_at: new Date().toISOString() } : s
+                )
+            );
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Erro ao atualizar stand');
         }

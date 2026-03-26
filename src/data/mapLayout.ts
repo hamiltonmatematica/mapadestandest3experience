@@ -59,12 +59,12 @@ export const standPositions: StandPosition[] = [
     // ═══════════════════════════════════════════
     // fileira 1: 95 a 90 (estavam na linha 3)
     ...Array.from({length: 6}, (_, i) => ({ 
-        numero: 95 - i, tipo: 'master' as StandType, 
+        numero: [85, 83, 81, 79, 77, 75][i], tipo: 'master' as StandType, 
         x: gX(3 + i, 3), y: gY(3 + i, 3), width: SW, height: SH 
     })),
     // fileira 2: 89 a 84 (estavam na linha 4)
     ...Array.from({length: 6}, (_, i) => ({ 
-        numero: 89 - i, tipo: 'master' as StandType, 
+        numero: [65, 66, 67, 68, 69, 74][i], tipo: 'master' as StandType, 
         x: gX(3 + i, 4), y: gY(3 + i, 4), width: SW, height: SH 
     })),
 
@@ -74,12 +74,12 @@ export const standPositions: StandPosition[] = [
     // ═══════════════════════════════════════════
     // fileira 1: 74 a 69 (estavam na linha 11)
     ...Array.from({length: 6}, (_, i) => ({ 
-        numero: 74 - i, tipo: 'ouro' as StandType, 
+        numero: [64, 63, 62, 61, 60, 55][i], tipo: 'ouro' as StandType, 
         x: gX(3 + i, 11), y: gY(3 + i, 11), width: SW, height: SH 
     })),
     // fileira 2: 68 a 63 (estavam na linha 12)
     ...Array.from({length: 6}, (_, i) => ({ 
-        numero: 68 - i, tipo: 'ouro' as StandType, 
+        numero: 50 - i, tipo: 'ouro' as StandType, 
         x: gX(3 + i, 12), y: gY(3 + i, 12), width: SW, height: SH 
     })),
 
@@ -93,6 +93,16 @@ export const standPositions: StandPosition[] = [
         width: SW, height: SH 
     })),
 ];
+
+const ouroStands = [30, 68, 63, 62, 61, 60];
+const masterStands = [87, 17, 18, 19, 20, 21, 22, 31, 38, 39, 40, 41];
+const bronzeStands = [32, 33, 34, 35, 36, 37];
+
+standPositions.forEach(stand => {
+    if (ouroStands.includes(stand.numero)) stand.tipo = 'ouro';
+    if (masterStands.includes(stand.numero)) stand.tipo = 'master';
+    if (bronzeStands.includes(stand.numero)) stand.tipo = 'bronze';
+});
 
 // ═══════════════════════════════════════════
 // ÁREAS ESPECIAIS (Também Rotacionadas)
