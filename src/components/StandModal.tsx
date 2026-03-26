@@ -16,6 +16,7 @@ export default function StandModal({ stand, isOpen, onClose, onSave, isAdmin = f
     const [status, setStatus] = useState<StandStatus>('disponivel');
     const [empresa, setEmpresa] = useState('');
     const [tipo, setTipo] = useState<StandType>('prata');
+    const [numero, setNumero] = useState<number>(0);
     const [saving, setSaving] = useState(false);
 
     useEffect(() => {
@@ -23,6 +24,7 @@ export default function StandModal({ stand, isOpen, onClose, onSave, isAdmin = f
             setStatus(stand.status);
             setEmpresa(stand.empresa || '');
             setTipo(stand.tipo);
+            setNumero(stand.numero);
         }
     }, [stand]);
 
@@ -30,7 +32,7 @@ export default function StandModal({ stand, isOpen, onClose, onSave, isAdmin = f
 
     const handleSave = async () => {
         setSaving(true);
-        await onSave(stand.id, { status, empresa: empresa || null, tipo });
+        await onSave(stand.id, { status, empresa: empresa || null, tipo, numero });
         setSaving(false);
         onClose();
     };
@@ -81,6 +83,20 @@ export default function StandModal({ stand, isOpen, onClose, onSave, isAdmin = f
 
                     {isAdmin ? (
                         <>
+                            {/* Número do Stand */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-300 mb-2">
+                                    Número do Stand
+                                </label>
+                                <input
+                                    type="number"
+                                    value={numero}
+                                    onChange={(e) => setNumero(parseInt(e.target.value, 10) || 0)}
+                                    min={1}
+                                    className="w-full bg-gray-800 border border-gray-600 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
+                                />
+                            </div>
+
                             {/* Status select */}
                             <div>
                                 <label className="block text-sm font-medium text-gray-300 mb-2">

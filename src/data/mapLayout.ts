@@ -36,11 +36,12 @@ export const standPositions: StandPosition[] = [
     // ANTES: Left column (01-10) -> Col 0, Rows 14 a 5
     // AGORA: Top Row (Horizontal em y=gY(0), da esquerda pra direita)
     // ═══════════════════════════════════════════
-    ...Array.from({length: 8}, (_, i) => ({ 
-        numero: 3 + i, tipo: 'ouro' as StandType, 
-        x: gX(0, 12 - i), y: gY(0, 12 - i), 
+    // Stands 3, 5, 6, 7, 8, 9, 10 — sem gap (3 encostado no 5)
+    ...([3, 5, 6, 7, 8, 9, 10].map((num, i) => ({ 
+        numero: num, tipo: 'ouro' as StandType, 
+        x: gX(0, 11 - i), y: gY(0, 11 - i), 
         width: SW, height: SH 
-    })).filter(s => s.numero !== 4),
+    }))),
   
     // ═══════════════════════════════════════════
     // ANTES: Top Row (11-22) -> Row 0, Cols 1 a 12
