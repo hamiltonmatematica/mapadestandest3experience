@@ -59,7 +59,7 @@ export const standPositions: StandPosition[] = [
     // ═══════════════════════════════════════════
     // fileira 1: 95 a 90 (estavam na linha 3)
     ...Array.from({length: 6}, (_, i) => ({ 
-        numero: [85, 83, 81, 79, 77, 75][i], tipo: 'master' as StandType, 
+        numero: [85, 84, 86, 87, 76, 75][i], tipo: 'master' as StandType, 
         x: gX(3 + i, 3), y: gY(3 + i, 3), width: SW, height: SH 
     })),
     // fileira 2: 89 a 84 (estavam na linha 4)
@@ -79,7 +79,7 @@ export const standPositions: StandPosition[] = [
     })),
     // fileira 2: 68 a 63 (estavam na linha 12)
     ...Array.from({length: 6}, (_, i) => ({ 
-        numero: 50 - i, tipo: 'ouro' as StandType, 
+        numero: [45, 46, 47, 48, 49, 50][i], tipo: 'ouro' as StandType, 
         x: gX(3 + i, 12), y: gY(3 + i, 12), width: SW, height: SH 
     })),
 
