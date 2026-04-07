@@ -111,16 +111,20 @@ ALTER TABLE stands ENABLE ROW LEVEL SECURITY;
 ALTER TABLE expositores ENABLE ROW LEVEL SECURITY;
 
 -- Política: todos podem ler stands
+DROP POLICY IF EXISTS "Stands são visíveis publicamente" ON stands;
 CREATE POLICY "Stands são visíveis publicamente" ON stands
   FOR SELECT USING (true);
 
--- Política: somente autenticados podem editar
-CREATE POLICY "Autenticados podem editar stands" ON stands
-  FOR ALL USING (auth.role() = 'authenticated');
+-- Política Removida: Nenhuma inserção ou atualização pelo frontend diretamente.
+-- Todo o fluxo de mutações para stands deve ser feito via Backend (API Routes) usando service_role_key
+DROP POLICY IF EXISTS "Autenticados podem editar stands" ON stands;
+DROP POLICY IF EXISTS "Qualquer um pode editar stands" ON stands;
 
 -- Política de expositores
+DROP POLICY IF EXISTS "Expositores visíveis publicamente" ON expositores;
 CREATE POLICY "Expositores visíveis publicamente" ON expositores
   FOR SELECT USING (true);
 
-CREATE POLICY "Autenticados podem editar expositores" ON expositores
-  FOR ALL USING (auth.role() = 'authenticated');
+-- Política Removida: Nenhuma inserção ou atualização de expositores permitida pelo client-side
+DROP POLICY IF EXISTS "Autenticados podem editar expositores" ON expositores;
+DROP POLICY IF EXISTS "Qualquer um pode editar expositores" ON expositores;

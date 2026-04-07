@@ -8,7 +8,7 @@ interface StandModalProps {
     stand: Stand | null;
     isOpen: boolean;
     onClose: () => void;
-    onSave: (id: string, updates: Partial<Stand>) => Promise<void>;
+    onSave: (id: string, updates: Partial<Stand>) => Promise<{ success: boolean; error?: string }>;
     isAdmin?: boolean;
 }
 
@@ -31,10 +31,27 @@ export default function StandModal({ stand, isOpen, onClose, onSave, isAdmin = f
     if (!isOpen || !stand) return null;
 
     const handleSave = async () => {
+        if (!empresa.trim() && !isAdmin) {
+            alert('Por favor, informe o nome da sua empresa para reservar.');
+            return;
+        }
+
         setSaving(true);
-        await onSave(stand.id, { status, empresa: empresa || null, tipo, numero });
+        // Se não for admin, a ação padrão é reservar
+        const finalStatus = isAdmin ? status : 'reservado';
+        const result = await onSave(stand.id, { 
+            status: finalStatus, 
+            empresa: empresa || null, 
+            tipo, 
+            numero 
+        });
         setSaving(false);
-        onClose();
+        
+        if (result.success) {
+            onClose();
+        } else {
+            alert(`Falha ao salvar: ${result.error || 'Erro desconhecido'}`);
+        }
     };
 
     return (
@@ -145,36 +162,56 @@ export default function StandModal({ stand, isOpen, onClose, onSave, isAdmin = f
                             </div>
                         </>
                     ) : (
-                        <div className="space-y-3">
-                            {stand.empresa && (
-                                <div className="p-3 bg-gray-800/50 rounded-xl">
-                                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Empresa</p>
-                                    <p className="text-white font-medium">{stand.empresa}</p>
+                        <div className="space-y-4">
+                            {stand.status === 'disponivel' ? (
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                                        Nome da sua Empresa
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={empresa}
+                                        onChange={(e) => setEmpresa(e.target.value)}
+                                        placeholder="Digite para reservar..."
+                                        className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
+                                    />
+                                    <p className="text-[10px] text-gray-500 mt-2 italic">
+                                        * Ao reservar, sua empresa será listada neste stand até a confirmação de venda.
+                                    </p>
+                                </div>
+                            ) : (
+                                <div className="space-y-3">
+                                    {stand.empresa && (
+                                        <div className="p-3 bg-gray-800/50 rounded-xl">
+                                            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Empresa</p>
+                                            <p className="text-white font-medium">{stand.empresa}</p>
+                                        </div>
+                                    )}
+                                    <div className="p-3 bg-gray-800/50 rounded-xl">
+                                        <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Tipo</p>
+                                        <p className="text-white font-medium">{standTypeLabels[stand.tipo]}</p>
+                                    </div>
                                 </div>
                             )}
-                            <div className="p-3 bg-gray-800/50 rounded-xl">
-                                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">Tipo</p>
-                                <p className="text-white font-medium">{standTypeLabels[stand.tipo]}</p>
-                            </div>
                         </div>
                     )}
                 </div>
 
                 {/* Footer */}
-                {isAdmin && (
+                {(isAdmin || stand.status === 'disponivel') && (
                     <div className="px-6 py-4 border-t border-gray-700/50 flex gap-3">
                         <button
                             onClick={onClose}
                             className="flex-1 px-4 py-2.5 rounded-xl bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white transition-all font-medium"
                         >
-                            Cancelar
+                            {isAdmin ? 'Cancelar' : 'Fechar'}
                         </button>
                         <button
                             onClick={handleSave}
                             disabled={saving}
                             className="flex-1 px-4 py-2.5 rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/25"
                         >
-                            {saving ? 'Salvando...' : 'Salvar'}
+                            {saving ? 'Salvando...' : isAdmin ? 'Salvar' : 'Reservar Stand'}
                         </button>
                     </div>
                 )}

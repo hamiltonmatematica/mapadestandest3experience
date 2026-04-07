@@ -43,7 +43,7 @@ export function useStands() {
         }
     }, []);
 
-    const updateStand = useCallback(async (id: string, updates: Partial<Stand>) => {
+    const updateStand = useCallback(async (id: string, updates: Partial<Stand>): Promise<{ success: boolean; error?: string }> => {
         if (USE_MOCK) {
             setStands(prev => {
                 const updated = prev.map(s =>
@@ -56,12 +56,16 @@ export function useStands() {
         }
 
         try {
-            const { error: updateError } = await supabase
-                .from('stands')
-                .update({ ...updates, updated_at: new Date().toISOString() })
-                .eq('id', id);
-
-            if (updateError) throw updateError;
+            const res = await fetch('/api/stands', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, updates }),
+            });
+            
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+                throw new Error(data.error || 'Erro ao atualizar stand via API');
+            }
 
             // Atualiza estado local imediatamente
             setStands(prev =>
@@ -69,8 +73,11 @@ export function useStands() {
                     s.id === id ? { ...s, ...updates, updated_at: new Date().toISOString() } : s
                 )
             );
+            return { success: true };
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'Erro ao atualizar stand');
+            const message = err instanceof Error ? err.message : 'Erro ao atualizar stand';
+            setError(message);
+            return { success: false, error: message };
         }
     }, []);
 
