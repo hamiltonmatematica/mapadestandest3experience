@@ -52,7 +52,7 @@ export function useStands() {
                 localStorage.setItem('mock-stands', JSON.stringify(updated));
                 return updated;
             });
-            return;
+            return { success: true };
         }
 
         try {
